@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+      
+    <!-- Jabil Space module component that will be executed once -->
+    <bean id="jabilSpaceAmp.customSpaceComponent" class="org.alfresco.repo.module.ImporterModuleComponent" parent="module.baseComponent" >
+        <property name="moduleId" value="JabilCustomSpaces" />
+        <property name="name" value="Jabil Custom Spaces" />
+        <property name="description" value="This AMP creates Jabil Space under Data Dictionary in repository while bootstrapping" />
+        <property name="sinceVersion" value="1.0" />
+        <property name="appliesFromVersion" value="1.0" />
+        <property name="importer" ref="spacesBootstrap"/>
+        <property name="bootstrapViews">
+           <list>
+               <props>
+                   <prop key="path">/${spaces.company_home.childname}/${spaces.dictionary.childname}/${spaces.dictionary.jabil.name}</prop>
+                   <prop key="location">alfresco/extension/bootstrap/jabil-spaces.xml</prop>
+                   <prop key="messages">alfresco/messages/jabil-spaces</prop>
+               </props>
+           </list>
+       </property>
+    </bean>
+    
+</beans>

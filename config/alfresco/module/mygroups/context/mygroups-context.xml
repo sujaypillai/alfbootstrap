@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+    
+    <!-- A simple class that is initialized by Spring -->
+    <bean id="mygroupsAmp.customBean" class="com.test.module.mygroups.MyGroups" init-method="init" />
+    
+    <!-- A simple module component that will be executed once -->
+    <bean id="mygroupsAmp.customGroupComponent" class="org.alfresco.repo.module.ImporterModuleComponent" parent="module.baseComponent" >
+        <property name="moduleId" value="MyCustomGroups" />
+        <property name="name" value="My Custom Groups" />
+        <property name="description" value="This AMP creates some default groups in repository while bootstrapping" />
+        <property name="sinceVersion" value="1.0" />
+        <property name="appliesFromVersion" value="1.0" />
+        <property name="importer" ref="spacesBootstrap"/>
+        <property name="bootstrapViews">
+           <list>
+               <props>
+                   <prop key="path">/${alfresco_user_store.system_container.childname}</prop>
+                   <prop key="location">alfresco/module/mygroups/myGroupImport.xml</prop>
+               </props>
+           </list>
+       </property>
+    </bean>
+    
+</beans>

@@ -1,0 +1,30 @@
+<view:view xmlns:view="http://www.alfresco.org/view/repository/1.0"
+	         xmlns:cm="http://www.alfresco.org/model/content/1.0"
+	         xmlns:app="http://www.alfresco.org/model/application/1.0"
+           xmlns:emailserver="http://www.alfresco.org/model/emailserver/1.0">
+	
+	<!-- NOTE: all replaced properties referenced from repository.properties file must also be
+	     mapped in the import-export-context.xml spacesStoreImporter/configuration section -->
+	<cm:folder view:childName="${spaces.dictionary.sop.childname}">
+		<view:acl view:inherit="false">
+			<view:ace view:access="ALLOWED">
+				<view:authority>GROUP_EVERYONE</view:authority>
+				<view:permission>Consumer</view:permission>
+			</view:ace>
+		</view:acl>
+		<app:uifacets/>
+		<cm:name>${spaces.dictionary.sop.name}</cm:name>
+		<app:icon>space-icon-default</app:icon>
+		<cm:title>${spaces.dictionary.sop.name}</cm:title>
+		<cm:description>${spaces.dictionary.sop.description}</cm:description>
+		<cm:contains>
+			<cm:folder view:childName="${spaces.templates.email.childname}">
+				<app:uifacets/>
+				<cm:name>${spaces.sop.templates.email.name}</cm:name>
+				<app:icon>space-icon-default</app:icon>
+				<cm:title>${spaces.sop.templates.email.name}</cm:title>
+				<cm:description>${spaces.sop.templates.email.description}</cm:description>
+            </cm:folder>
+        </cm:contains>
+   </cm:folder>
+</view:view>
